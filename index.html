@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Théo Malherbe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #about > p {
+      width: 60%;
+      margin: 2rem auto 4rem auto;
+      text-align: center;
+      color: #b0a9db;
+      font-size: 1.5rem;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(135deg, #05040f, #1a1a3d, #0b0b23);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header#hero {
+      position: relative;
+      height: 40vh;
+      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    header#hero .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, -1);
+      z-index: 5;
+    }
+
+    header#hero .content {
+      position: relative;
+      z-index: 10;
+      padding: 0 2rem;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .neon-text {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #4052b5;
+      text-shadow:
+        0 0 1px #4052b5,
+        0 0 3px #2a3480;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #b3b3cc;
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-shadow: 0 0 5px #111;
+    }
+
+    section#about {
+      max-width: 48rem;
+      margin: 3rem auto 5rem auto;
+      padding: 0 1.5rem;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    section#about h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid #9333ea;
+      padding-bottom: 0.5rem;
+      color: #d1c4e9;
+    }
+
+    section#about p {
+      color: #c1c1e1;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    main#projects {
+      max-width: 80rem;
+      margin: 0 auto 6rem auto;
+      padding: 0 1.5rem;
+    }
+
+    main#projects h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      border-bottom: 3px solid #9333ea;
+      padding-bottom: 0.5rem;
+      color: #d1c4e9;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .grid-projects {
+      display: grid;
+      gap: 3rem;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    }
+
+    .video-card {
+      position: relative;
+      background-color: #1e1b38;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .video-card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(147, 51, 234, 0.7);
+    }
+
+    .video-card iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    .video-card .info {
+      padding: 1.5rem;
+      color: #b0a9db;
+    }
+
+    .video-card .info h3 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      color: #c8b8f5;
+      text-shadow: 0 0 10px #9333ea88;
+    }
+
+    .video-card .info p {
+      font-size: 0.875rem;
+      color: #9e94c7;
+      line-height: 1.3rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-top: 1px solid #3b2a63;
+      color: #827dbf;
+      font-size: 0.875rem;
+      user-select: none;
+    }
+
+    /* Particules tech et fond animé */
+
+    .particles-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 30px;
+      background: linear-gradient(90deg, #9333ea 0%, transparent 100%);
+      opacity: 0.15;
+      filter: drop-shadow(0 0 3px #9333ea);
+      border-radius: 1px;
+      animation: zigzagMove 1.5s infinite ease-in-out;
+    }
+
+    @keyframes zigzagMove {
+      0% { transform: translate(0, 0) rotate(15deg); opacity: 0.15; }
+      50% { transform: translate(5px, 10px) rotate(-15deg); opacity: 0.5; }
+      100% { transform: translate(0, 0) rotate(15deg); opacity: 0.15; }
+    }
+
+    canvas#network-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="network-bg"></canvas>
+  <div class="particles-container" aria-hidden="true"></div>
+
+  <header id="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1 class="neon-text">Projets audiovisuels</h1>
+      <p class="subtitle">Une collection de mes meilleurs projets audiovisuels</p>
+    </div>
+  </header>
+
+  <section id="about" data-aos="fade-up">
+    <p>
+      Je veille à concevoir des réalisations modernes et soignées, en accordant une attention particulière à l’étalonnage, au rythme, à la cohérence, et à ce qui fait leur originalité.
+    </p>
+  </section>
+
+  <main id="projects">
+    <h2 data-aos="fade-up">Vidéos</h2>
+    <div class="grid-projects">
+      <div class="video-card" data-aos="zoom-in-up">
+        <iframe src="https://www.youtube.com/embed/X8-ojeW0ack" allowfullscreen></iframe>
+        <div class="info">
+          <h3>Projet 1</h3>
+        </div>
+      </div>
+      <div class="video-card" data-aos="zoom-in-up" data-aos-delay="100">
+        <iframe src="https://www.youtube.com/embed/Tl7yorIKl8w" allowfullscreen></iframe>
+        <div class="info">
+          <h3>Projet 2</h3>
+        </div>
+      </div>
+      <div class="video-card" data-aos="zoom-in-up" data-aos-delay="200">
+        <iframe src="https://www.youtube.com/embed/Li523xkZv2I" allowfullscreen></iframe>
+        <div class="info">
+          <h3>Projet 3</h3>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Mon Nom. Conçu avec <span style="color:#9333ea;">passion</span> et <span style="color:#f472b6;">créativité</span>.
+  </footer>
+
+  <audio id="swoosh-sound" src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_9d3d35c81e.mp3?filename=dark-transition-whoosh-19667.mp3" preload="auto"></audio>
+
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const swoosh = document.getElementById('swoosh-sound');
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        swoosh.currentTime = 0;
+        swoosh.play();
+      });
+    });
+
+    const container = document.querySelector('.particles-container');
+    const particleCount = 40;
+    for (let i = 0; i < particleCount; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.top = Math.random() * 100 + 'vh';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (1 + Math.random()) + 's';
+      p.style.animationDelay = (Math.random() * 5) + 's';
+      container.appendChild(p);
+    }
+
+    // ANIMATION FOND HIGH-TECH
+    const canvas = document.getElementById('network-bg');
+    const ctx = canvas.getContext('2d');
+    let width, height, points;
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      points = Array.from({ length: 80 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: Math.random() * 0.5 - 0.25,
+        vy: Math.random() * 0.5 - 0.25
+      }));
+    }
+
+    function drawNetwork() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#4052b5';
+      points.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const a = points[i], b = points[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 100) {
+            ctx.strokeStyle = `rgba(64, 82, 181, ${1 - dist / 100})`;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(drawNetwork);
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+    drawNetwork();
+  </script>
+</body>
+</html>
