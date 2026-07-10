@@ -39,14 +39,14 @@
     header#hero {
       position: relative;
       height: 40vh;
-      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');
+      background-image: url('https://images.unsplash.com/photo-1693645325820-03c4be5b7031?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       overflow: hidden;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
       z-index: 10;
     }
@@ -61,8 +61,43 @@
     header#hero .content {
       position: relative;
       z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
       padding: 0 2rem;
       animation: fadeInUp 1s ease forwards;
+    }
+
+    .avatar-ring {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 9999px;
+      padding: 4px;
+      background: linear-gradient(135deg, #9333ea, #4052b5);
+      box-shadow: 0 0 20px rgba(147, 51, 234, 0.55), 0 0 40px rgba(64, 82, 181, 0.35);
+    }
+
+    .avatar-ring .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background: #1e1b38;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .avatar-inner svg {
+      width: 58%;
+      height: 58%;
+      color: #c8b8f5;
+    }
+
+    .identity {
+      text-align: left;
     }
 
     .neon-text {
@@ -221,8 +256,19 @@
   <header id="hero">
     <div class="overlay"></div>
     <div class="content">
-      <h1 class="neon-text">Théo Malherbe</h1>
-      <p class="subtitle">Une collection de mes meilleurs projets audiovisuels !</p>
+      <div class="avatar-ring">
+        <!-- Placeholder générique : remplace ce bloc par <img src="ta-photo.jpg" alt="Théo Malherbe"> quand tu as une vraie photo -->
+        <div class="avatar-inner">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4 20c0-3.9 3.58-7 8-7s8 3.1 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="identity">
+        <h1 class="neon-text">Théo Malherbe</h1>
+        <p class="subtitle">Une collection de mes meilleurs projets audiovisuels !</p>
+      </div>
     </div>
   </header>
 
@@ -358,6 +404,3 @@
   </script>
 </body>
 </html>
-
-
-
